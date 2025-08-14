@@ -23,17 +23,18 @@ class Order(models.Model):
 
     @property
     def total_price(self):
-        return sum(item.total_price for item in self.items)
+        return sum(item.total_price for item in self.items.all())
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
-    gul = models.ForeignKey(Gullar, on_delete=models.CASCADE)
+    product = models.ForeignKey(Gullar, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField(default=1)
 
+
     def __str__(self):
-        return self.gul.name
+        return self.product.name
 
     @property
     def total_price(self):
-        return self.gul.price * self.amount
+        return self.product.price * self.amount
 

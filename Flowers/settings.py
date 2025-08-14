@@ -40,13 +40,14 @@ INSTALLED_APPS = [
     'gullar',
     'account',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'card'
 
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTITICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication'],
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated']
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication'],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
 
 }
 MIDDLEWARE = [

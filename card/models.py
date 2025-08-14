@@ -1,5 +1,4 @@
 from django.db import models
-# Create your models here.
 from Flowers.settings import AUTH_USER_MODEL
 from gullar.models import Gullar
 
@@ -14,18 +13,20 @@ class Card(models.Model):
 
     @property
     def total_price(self):
-        return sum(item.total_price for item in self.items)
+        return sum(item.total_price for item in self.items.all())
 
 class CardItem(models.Model):
-    card = models.ForeignKey(on_delete=models.CASCADE)
-    gul = models.ForeignKey(Gullar, on_delete=models.CASCADE, blank=True, null=True)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Gullar, on_delete=models.CASCADE, blank=True, null=True)
     amount = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.gul.name
+        return self.product.name
 
     @property
     def total_price(self):
-        return self.gul.price * self.amount
+        return self.product.price * self.amount
 
 
