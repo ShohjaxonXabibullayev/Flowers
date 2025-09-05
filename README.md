@@ -17,7 +17,7 @@ API orqali gullarni qo‘shish, ko‘rish, tahrirlash va o‘chirish (CRUD) amal
 
 🖥️ Localhost’da ishga tushirish
 
-1️⃣ Ish Stolda papka ochib olish va uninig ichiga kirib cmd ni ochib olish kerak
+1️⃣ cmd ni ochib olish kerak
 
 2️⃣ Loyihani yuklab olish cmd iga git clone https://github.com/ShohjaxonXabibullayev/Logitech deb yozasiz
 
